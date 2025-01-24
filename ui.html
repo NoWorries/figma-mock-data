@@ -111,16 +111,16 @@ hr {
     </style>
   </head>
   <body>
-    <div class="introduction"><h2>Generate accounting data</h2>
+    <div class="introduction"><h2>Generate numbers</h2>
       <p>Insert numbers between a specific range, with options for negative values.</p>
     <ol><li>Select text layers</li>
       <li>Use advanced options to make adjustments (Optional)</li>
-      <li>Press "Generate Accounting Data" to replace data</li>
+      <li>Press "Generate numbers" to replace data</li>
       <li>Review results, repeat if necessary</li>
       <li>Copy total to clipboard</li></ol></div>
     <div class="mainContent">
       
-    <button id="generateButton">Generate accounting data</button>
+    <button id="generateButton">Generate numbers</button>
  
     <div class="inputRow ">
       <label for="advancedToggle">Advanced options</label>
@@ -129,7 +129,7 @@ hr {
   </div>
     <div id="advancedOptions">
       <div class="inputRow inputField spacer">
-        <label for="numberChance">Chance of being a number (%)</label>
+        <label for="numberChance">Chance of being a number or a "-" (%)</label>
         <input type="number" id="numberChance" value="50" min="0" max="100" />
       </div>
       <div class="inputRow inputField spacer">
@@ -148,11 +148,11 @@ hr {
 <hr>
   <div class="introduction"><h2>Calculate totals</h2>
     <ol><li>Select text layers</li>
-      <li>Press "Calculate Selected Total"</li>
+      <li>Press "Calculate total"</li>
       <li>Copy total to clipboard</li></ol></div>
     <div id="totalContainer" class="secondContent">
       <p>Total: <span id="totalValue">0.00</span></p>
-      <button id="calculateTotalButton">Calculate selected layers</button>
+      <button id="calculateTotalButton">Calculate total</button>
       <button id="copyButton" class="secondary" style="display: none;">Copy to Clipboard</button>
     </div>
 
