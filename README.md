@@ -4,9 +4,9 @@ Useful tools to help generate realistic data in your designs.
 Made by [@JoshDesignNZ](https://twitter.com/JoshDesignNZ) 
 
 ## Generate numbers between a specific range
-* Select text layers and press "Generate numbers"
+* Select text layers
 * Use advanced options to make adjustments (Optional)
-* Press "Generate Accounting Data" to replace data
+* Press "Generate numbers" to replace data
 * Review results, repeat if necessary
 * Copy total to clipboard
 
