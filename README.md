@@ -13,7 +13,9 @@ Made by [@JoshDesignNZ](https://twitter.com/JoshDesignNZ)
 ### Advanced options
 * Define min and max values
 * Define % chance of positive or negative number
-* Define % chance of being a number or "-" (no value)
+* Define % chance of being a number
+* Customise empty value "-"
+* Choose number of decimal places
 
 ## Calculate the sum total
 * Select text layers and press "Calculate selected total"
