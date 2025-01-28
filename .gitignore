@@ -1,0 +1,7 @@
+.DS_Store
+.turbo
+*.log
+*.css.d.ts
+*.tsbuildinfo
+lib/
+node_modules/
