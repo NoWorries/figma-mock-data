@@ -2,6 +2,12 @@
   // Show the plugin UI
   figma.showUI(__html__, { themeColors: true, width: 400, height: 600 });
 
+  // restore previous size
+  figma.clientStorage.getAsync('size').then(size => {
+    if(size) figma.ui.resize(size.w,size.h);
+  }).catch(err=>{});
+  
+
 // Helper function to format numbers as currency (adds commas and two decimal places)
 function formatCurrency(value) {
     const parts = value.toFixed(2).split(".");
@@ -90,6 +96,13 @@ function formatCurrency(value) {
   
   // Listen to messages from the UI
   figma.ui.onmessage = (msg) => {
+    if(msg.type === "resize"){
+
+      figma.ui.resize(msg.size.w,msg.size.h);      
+      figma.clientStorage.setAsync('size', msg.size).catch(err=>{});// save size
+      
+    }
+
     if (msg.type === "generateData") {
       const isAdvanced = msg.advanced;
       const negativeChance = msg.negativeChance;
