@@ -1,29 +1,30 @@
 // Show the plugin UI
-figma.showUI(__html__, { themeColors: true, width: 400, height: 600 });
+figma.showUI(__html__, { themeColors: true, width: 400, height: 500 });
 
 // Restore previous size
 figma.clientStorage.getAsync('size').then(size => {
   if (size) figma.ui.resize(size.w, size.h);
 }).catch(err => {});
 
-// Helper function to format numbers as currency (adds commas and two decimal places)
-function formatCurrency(value) {
-  const parts = value.toFixed(2).split(".");
+// Helper function to format numbers as currency (adds commas and adjustable decimal places)
+function formatCurrency(value, decimalPlaces = 2) {
+  const parts = value.toFixed(decimalPlaces).split(".");
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","); // Add commas
   return parts.join(".");
 }
 
 // Helper function to generate random data with adjustable parameters
-function generateRandomData(isAdvanced, negativeChance, minValue, maxValue, numberChance) {
+function generateRandomData(isAdvanced, negativeChance, minValue, maxValue, numberChance, decimalPlaces, replacementString = "-") {
   const isNumber = Math.random() < (numberChance / 100);
-  if (!isNumber) return "-"; // If it's not a number, return "-"
+  if (!isNumber) return replacementString; // Return user-defined replacement string
 
   const isNegative = Math.random() < (negativeChance / 100);
   const value = Math.random() * (maxValue - minValue) + minValue;
-  const formattedValue = formatCurrency(value); // Format value with commas
+  const formattedValue = formatCurrency(value, decimalPlaces); // Format value with commas and specified decimal places
 
   return isNegative ? `(${formattedValue})` : formattedValue;
 }
+
 
 // Function to recursively find all text layers within a selection
 function findAllTextLayers(nodes) {
@@ -51,7 +52,7 @@ async function loadFontForText(node) {
 }
 
 // Function to insert random data into selected text layers
-async function insertRandomData(isAdvanced, negativeChance, minValue, maxValue, numberChance) {
+async function insertRandomData(isAdvanced, negativeChance, minValue, maxValue, numberChance, decimalPlaces, replacementString = "-") {
   const selection = figma.currentPage.selection;
 
   if (selection.length === 0) {
@@ -68,15 +69,18 @@ async function insertRandomData(isAdvanced, negativeChance, minValue, maxValue, 
 
   for (const node of textLayers) {
     await loadFontForText(node);
-    const randomData = generateRandomData(isAdvanced, negativeChance, minValue, maxValue, numberChance);
+    const randomData = generateRandomData(
+      isAdvanced, negativeChance, minValue, maxValue, numberChance, decimalPlaces, replacementString
+    );
     node.characters = randomData;
   }
 
   figma.notify("Random data inserted into selected text layers.");
 }
 
+
 // Function to calculate the total value of selected text layers
-async function calculateTotal() {
+async function calculateTotal(decimalPlaces = 2) {
   const selection = figma.currentPage.selection;
 
   if (selection.length === 0) {
@@ -107,8 +111,8 @@ async function calculateTotal() {
     }
   }
 
-  // Format the total with commas and two decimal places
-  const formattedTotal = formatCurrency(total);
+  // Format the total with commas and specified decimal places
+  const formattedTotal = formatCurrency(total, decimalPlaces);
   figma.ui.postMessage({ type: "updateTotal", total: formattedTotal });
 }
 
@@ -120,25 +124,22 @@ figma.ui.onmessage = async (msg) => {
   }
 
   if (msg.type === "generateData") {
-    const isAdvanced = msg.advanced;
-    const negativeChance = msg.negativeChance;
-    const minValue = msg.minValue;
-    const maxValue = msg.maxValue;
-    const numberChance = msg.numberChance;
+    const { advanced, negativeChance, minValue, maxValue, numberChance, decimalPlaces = 2, replacementString = "-" } = msg;
 
-    // Quietly generate data
-    await insertRandomData(isAdvanced, negativeChance, minValue, maxValue, numberChance);
+  // Generate data with the replacement string
+  await insertRandomData(advanced, negativeChance, minValue, maxValue, numberChance, decimalPlaces, replacementString);
 
-    // Calculate total after generating data
-    await calculateTotal();
+  // Calculate total after generating data
+  await calculateTotal(decimalPlaces);
   }
 
   if (msg.type === "calculateTotal") {
-    await calculateTotal();
+    const { decimalPlaces = 2 } = msg; // Default to 2 decimal places
+    await calculateTotal(decimalPlaces);
   }
 
   if (msg.type === "copyToClipboard") {
-    const total = msg.total;
+    const { total } = msg;
 
     try {
       navigator.clipboard.writeText(total)

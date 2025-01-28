@@ -4,90 +4,101 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mock Accounting Data</title>
-    <link rel="stylesheet" href="style.css">
-    <style>body {
-      background-color: var(--figma-color-bg);
-      color: var(--figma-color-text);
-  margin: 0;
-      padding: 0;
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background-color: var(--figma-color-bg);
+        color: var(--figma-color-text);
+        margin: 0;
+        padding: 0;
 
-      font-size: 12px;
-      font-family: "Inter", Arial, Helvetica, sans-serif;
-    }
-    #main{
-   height: 100%;
-   min-width: 250px;
-   min-height: 250px;
- }
- .introduction p {margin-bottom: 0;}
- details {
-  /* border: 1px solid #aaa; */
-  padding: 0 1rem;
-  background-color: var(--figma-color-bg-secondary);
+        font-size: 12px;
+        font-family: "Inter", Arial, Helvetica, sans-serif;
+      }
+      #main {
+        height: 100%;
+        min-width: 250px;
+        min-height: 250px;
+      }
+      .introduction p {
+        margin-bottom: 0;
+      }
+      details {
+        /* border: 1px solid #aaa; */
+        padding: 0 1rem;
+        background-color: var(--figma-color-bg-secondary);
+      }
+
+      summary {
+        font-weight: regular;
+        margin: 0rem -1rem 0;
+        padding: 1rem;
+        background-color: var(--figma-color-bg);
+      }
+
+      details[open] {
+        padding: 0 1rem 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      details[open] summary {
+        margin-bottom: 1rem;
+      }
+
+      #corner {
+        position: fixed;
+        right: 1px;
+        bottom: 2px;
+        cursor: nwse-resize;
+      }
+      h2 {
+        margin-top: 0;
+        font-size: 0.9rem;
+        font-weight: 550;
+      }
+      button {
+        padding: 8px 12px;
+        margin: 0 0 8px 0;
+        color: var(--figma-color-text-onbrand);
+        background-color: var(--figma-color-bg-brand);
+        font-family: var(--figma-text-body-medium-font-family);
+        font-size: var(--figma-text-body-medium-font-size);
+        font-weight: 450;
+        letter-spacing: var(--figma-text-body-medium-letter-spacing);
+        line-height: var(--figma-text-body-medium-line-height);
+        border: none;
+        border-radius: 4px;
+        margin-right: 0.5em;
+      }
+      button.button:focus, input[type="text"]:focus,input[type="number"]:focus {
+  outline: 2px solid var(--figma-color-bg-brand);
+  outline-offset: 2px;
 }
-
-summary {
-  font-weight: bold;
-  margin: 0rem -1rem 0;
-  padding: 1rem;
-  background-color: var(--figma-color-bg);
-}
-
-details[open] {
-  padding: 0 1rem 0.5rem;
-  margin-bottom: 1rem;
-}
-
-details[open] summary {
-  margin-bottom: 1rem;
-}
-
-    #corner{
-   position: fixed;
-   right: 1px;
-   bottom: 2px;
-   cursor: nwse-resize;
- }
-  h2 {margin-top:0;font-size: 0.9rem; font-weight: 550;}
-    button {
-      padding: 8px 12px;
-      margin: 0 0 8px 0;
-      color: var(--figma-color-text-onbrand);
-      background-color: var(--figma-color-bg-brand);
-      font-family: var(--figma-text-body-medium-font-family);
-    font-size: var(--figma-text-body-medium-font-size);
-    font-weight: 450;
-    letter-spacing: var(--figma-text-body-medium-letter-spacing);
-    line-height: var(--figma-text-body-medium-line-height);
-      border:none;
-      border-radius: 4px;
-
-  }
-  ol {
-    color: var(--figma-color-text-primary);
-    padding: 0 1rem;
-    li {
-      margin-bottom: 0.35em;
-    }
-  }
-    label {
-      margin-right: 10px;
-      font-weight: 450;
-    }
-    .introduction {
-      padding: 1rem 1rem 0;
-    }
-    .mainContent {
-      padding: 0rem 1rem 0.5rem;
-    }
-    .secondContent {
-      padding: 0rem 1rem 1rem;
-    }
-    .inputRow {
+      ol {
+        color: var(--figma-color-text-primary);
+        padding: 0 1rem;
+        li {
+          margin-bottom: 0.5em;
+        }
+      }
+      label {
+        margin-right: 10px;
+        font-weight: 450;
+      }
+      .introduction {
+        padding: 1rem 1rem 0;
+      }
+      .mainContent {
+        padding: 0rem 1rem 0.5rem;
+      }
+      .secondContent {
+        padding: 0rem 1rem 1rem;
+      }
+      .inputRow {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
+
         input {
           font-size: 11px;
           font-weight: 450;
@@ -97,10 +108,7 @@ details[open] summary {
           border-radius: 2px;
           height: 1.5rem;
           padding-left: 7px;
-
-
         }
-          
       }
       .inputField {
         input {
@@ -115,180 +123,248 @@ details[open] summary {
 
           width: 16ch;
         }
-      
       }
-  
-.spacer {
-  margin-bottom:6px;
-}
-hr {
-  margin:0;
-}
-    #advancedOptions {
-      padding: 1rem;
-      display: none;
-      margin-top: 0;
-      background-color: var(--figma-color-bg-secondary);
 
-     
-    }
-    #totalContainer {
-      margin-top: 0;
-    }
-    #totalValue {
-      font-weight: bold;
-    }
-    
-    .secondContent p, .secondContent .calculateTotalButton {
-      font-size: 14px;
-      margin-top: 0;
-    }
+      .spacer {
+        margin-bottom: 6px;
+      }
+      hr {
+        margin: 0;
+      }
+      #advancedOptions {
+        padding: 1rem;
+        display: none;
+        margin-top: 0;
+        background-color: var(--figma-color-bg-secondary);
+      }
+      #totalContainer {
+        margin-top: 0;
+      }
+      #totalValue {
+        font-weight: bold;
+      }
+
+      .secondContent p,
+      .secondContent .calculateTotalButton {
+        font-size: 14px;
+        margin-top: 0;
+      }
     </style>
   </head>
   <body>
-
     <div id="main">
-      <svg id="corner" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16 0V16H0L16 0Z" fill="white"/>
-        <path d="M6.22577 16H3L16 3V6.22576L6.22577 16Z" fill="#8C8C8C"/>
-        <path d="M11.8602 16H8.63441L16 8.63441V11.8602L11.8602 16Z" fill="#8C8C8C"/>
+      <svg
+        id="corner"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M16 0V16H0L16 0Z" fill="white" />
+        <path d="M6.22577 16H3L16 3V6.22576L6.22577 16Z" fill="#8C8C8C" />
+        <path
+          d="M11.8602 16H8.63441L16 8.63441V11.8602L11.8602 16Z"
+          fill="#8C8C8C"
+        />
       </svg>
-      
-    <div class="introduction"><h2>Generate numbers</h2>
-      <p>Insert numbers between a specific range, with options for negative values.</p>
-    </div>
+
+      <div class="introduction">
+        <h2>Generate numbers</h2>
+        <p>
+          Insert numbers between a specific range, with options for negative
+          values.
+        </p>
+      </div>
       <details>
-        <summary>Instructions</summary>  
-        <ol><li>Select text layers</li>
+        <summary>Instructions</summary>
+        <ol>
+          <li>Select text layers</li>
           <li>Use advanced options to make adjustments (Optional)</li>
           <li>Press "Generate numbers" to replace data</li>
           <li>Review results, repeat if necessary</li>
-          <li>Copy total to clipboard</li></ol>
+          <li>Copy total to clipboard</li>
+        </ol>
       </details>
-    <div class="mainContent">
-      
-    <button id="generateButton">Generate numbers</button>
- 
-    <div class="inputRow ">
-      <label for="advancedToggle">Advanced options</label>
-      <input type="checkbox" id="advancedToggle" />
-    </div>
-  </div>
-    <div id="advancedOptions">
-      <div class="inputRow inputField spacer">
-        <label for="numberChance">Chance of being a number or a "-" (%)</label>
-        <input type="number" id="numberChance" value="50" min="0" max="100" />
+      <div class="mainContent">
+        <button class="button" id="generateButton">Generate numbers</button>
+
+        <div class="inputRow">
+          <label class="" for="advancedToggle">Advanced options</label>
+          <input type="checkbox" id="advancedToggle" />
+        </div>
       </div>
-      <div class="inputRow inputField spacer">
-        <label for="minValue">Minimum value</label>
-        <input type="number" id="minValue" value="0" min="0" />
+      <div id="advancedOptions">
+        <div class="inputRow inputField spacer">
+          <label for="numberChance">Chance of being a number (%)</label>
+          <input type="number" id="numberChance" value="50" min="0" max="100" />
+        </div>
+        <div class="inputRow inputField spacer">
+          <label for="replacementString"
+            >Empty value (when not a number):</label
+          >
+          <input type="text" id="replacementString" value="-" />
+        </div>
+        <div class="inputRow inputField spacer">
+          <label for="minValue">Minimum value</label>
+          <input type="number" id="minValue" value="0" min="0" />
+        </div>
+        <div class="inputRow inputField spacer">
+          <label for="maxValue">Maximum value</label>
+          <input type="number" id="maxValue" value="50000" min="1" />
+        </div>
+        <div class="inputRow inputField spacer">
+          <label for="negativeChance"
+            >Chance of being negative number (%)</label
+          >
+          <input
+            type="number"
+            id="negativeChance"
+            value="10"
+            min="0"
+            max="100"
+          />
+        </div>
+        <div class="inputRow inputField">
+          <label for="decimalPlaces">Decimal places</label>
+          <input type="number" id="decimalPlaces" value="2" min="0" max="10" />
+        </div>
       </div>
-      <div class="inputRow inputField spacer">
-        <label for="maxValue">Maximum value</label>
-        <input type="number" id="maxValue" value="50000" min="1" />
+      <hr />
+      <div class="introduction">
+        <h2>Calculate totals</h2>
+        <p>Calculate the sum total of the current selection.</p>
       </div>
-    <div class="inputRow inputField">
-      <label for="negativeChance">Chance of being negative number (%)</label>
-      <input type="number" id="negativeChance" value="10" min="0" max="100" />
-    </div>
-  </div>
-<hr>
-<div class="introduction"><h2>Calculate totals</h2>
-  <p>Calculate the sum total of the current selection.</p>
-</div>
-  <details>
-  <summary>Instructions</summary>  
-  
-    <ol><li>Select text layers</li>
-      <li>Press "Calculate total"</li>
-      <li>Copy total to clipboard</li></ol>
-    
-</details>
-<div id="totalContainer" class="secondContent">
-  <p>Total: <span id="totalValue">0.00</span></p>
-  <button id="calculateTotalButton">Calculate total</button>
-  <button id="copyButton" class="secondary" style="display: none;">Copy to Clipboard</button>
-</div>
+      <details>
+        <summary>Instructions</summary>
 
-    <script>
-      document.getElementById("generateButton").onclick = () => {
-        const advanced = document.getElementById("advancedToggle").checked;
-        const negativeChance = advanced ? parseInt(document.getElementById("negativeChance").value) : 10;
-        const minValue = advanced ? parseFloat(document.getElementById("minValue").value) : 1;
-        const maxValue = advanced ? parseFloat(document.getElementById("maxValue").value) : 50000;
-        const numberChance = advanced ? parseInt(document.getElementById("numberChance").value) : 50;
+        <ol>
+          <li>Select text layers</li>
+          <li>Press "Calculate total"</li>
+          <li>Copy total to clipboard</li>
+        </ol>
+      </details>
+      <div id="totalContainer" class="secondContent">
+        <p>Total: <span id="totalValue">0.00</span></p>
+        <button id="calculateTotalButton" class="button" >Calculate total</button>
+        <button id="copyButton" class="button secondary" style="display: none">
+          Copy to Clipboard
+        </button>
+      </div>
 
-        // Send the parameters to the plugin code
-        parent.postMessage(
-          {
-            pluginMessage: { type: "generateData", advanced, negativeChance, minValue, maxValue, numberChance },
-          },
-          "*"
-        );
+      <script>
+        document.getElementById("generateButton").onclick = () => {
+          const advanced = document.getElementById("advancedToggle").checked;
+          const negativeChance = advanced
+            ? parseInt(document.getElementById("negativeChance").value)
+            : 10;
+          const minValue = advanced
+            ? parseFloat(document.getElementById("minValue").value)
+            : 1;
+          const maxValue = advanced
+            ? parseFloat(document.getElementById("maxValue").value)
+            : 50000;
+          const numberChance = advanced
+            ? parseInt(document.getElementById("numberChance").value)
+            : 50;
+          const decimalPlaces = advanced
+            ? parseInt(document.getElementById("decimalPlaces").value)
+            : 2;
+          const replacementString =
+            document.getElementById("replacementString").value;
+          parent.postMessage(
+            {
+              pluginMessage: {
+                type: "generateData",
+                advanced,
+                negativeChance,
+                minValue,
+                maxValue,
+                numberChance,
+                decimalPlaces,
+                replacementString, // Include replacement string
+              },
+            },
+            "*"
+          );
 
-        // Trigger total recalculation after generating data
-        parent.postMessage({ pluginMessage: { type: "calculateTotal" } }, "*");
-      };
+          // Trigger total recalculation after generating data
+          parent.postMessage(
+            { pluginMessage: { type: "calculateTotal" } },
+            "*"
+          );
+        };
 
-      document.getElementById("calculateTotalButton").onclick = () => {
-        // Trigger total calculation without generating random data
-        parent.postMessage({ pluginMessage: { type: "calculateTotal" } }, "*");
-      };
+        document.getElementById("calculateTotalButton").onclick = () => {
+          // Trigger total calculation without generating random data
+          parent.postMessage(
+            { pluginMessage: { type: "calculateTotal" } },
+            "*"
+          );
+        };
 
-      document.getElementById("copyButton").onclick = () => {
-        const totalValue = document.getElementById("totalValue").innerText;
-        
-        // Create a temporary textarea to copy the total value to clipboard
-        const textarea = document.createElement('textarea');
-        textarea.value = totalValue;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-      };
+        document.getElementById("copyButton").onclick = () => {
+          const totalValue = document.getElementById("totalValue").innerText;
 
-      // Show advanced options when the checkbox is toggled
-      document.getElementById("advancedToggle").onchange = () => {
-        const advancedOptions = document.getElementById("advancedOptions");
-        advancedOptions.style.display = document.getElementById("advancedToggle").checked ? "block" : "none";
-      };
+          // Create a temporary textarea to copy the total value to clipboard
+          const textarea = document.createElement("textarea");
+          textarea.value = totalValue;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+        };
 
-      // Listen for total updates from the plugin side
-      window.onmessage = (event) => {
-        const { type, total } = event.data.pluginMessage;
-        if (type === "updateTotal") {
-          document.getElementById("totalValue").innerText = total;
-          document.getElementById("copyButton").style.display = "inline-block"; // Show copy button
+        // Show advanced options when the checkbox is toggled
+        document.getElementById("advancedToggle").onchange = () => {
+          const advancedOptions = document.getElementById("advancedOptions");
+          advancedOptions.style.display = document.getElementById(
+            "advancedToggle"
+          ).checked
+            ? "block"
+            : "none";
+        };
+
+        // Listen for total updates from the plugin side
+        window.onmessage = (event) => {
+          const { type, total } = event.data.pluginMessage;
+          if (type === "updateTotal") {
+            document.getElementById("totalValue").innerText = total;
+            document.getElementById("copyButton").style.display =
+              "inline-block"; // Show copy button
+          }
+        };
+        const corner = document.getElementById("corner");
+
+        // Define minimum width and height
+        const MIN_WIDTH = 250; // Set your desired minimum width
+        const MIN_HEIGHT = 200; // Set your desired minimum height
+
+        function resizeWindow(e) {
+          // Calculate the new size with constraints
+          const size = {
+            w: Math.max(MIN_WIDTH, Math.floor(e.clientX + 5)),
+            h: Math.max(MIN_HEIGHT, Math.floor(e.clientY + 5)),
+          };
+
+          // Send the size to the parent
+          parent.postMessage(
+            { pluginMessage: { type: "resize", size: size } },
+            "*"
+          );
         }
-      };
-      const corner = document.getElementById('corner');
 
-// Define minimum width and height
-const MIN_WIDTH = 250; // Set your desired minimum width
-const MIN_HEIGHT = 200; // Set your desired minimum height
+        // Event listeners for resizing
+        corner.onpointerdown = (e) => {
+          corner.onpointermove = resizeWindow;
+          corner.setPointerCapture(e.pointerId);
+        };
 
-function resizeWindow(e) {
-  // Calculate the new size with constraints
-  const size = {
-    w: Math.max(MIN_WIDTH, Math.floor(e.clientX + 5)),
-    h: Math.max(MIN_HEIGHT, Math.floor(e.clientY + 5))
-  };
-
-  // Send the size to the parent
-  parent.postMessage({ pluginMessage: { type: 'resize', size: size } }, '*');
-}
-
-// Event listeners for resizing
-corner.onpointerdown = (e) => {
-  corner.onpointermove = resizeWindow;
-  corner.setPointerCapture(e.pointerId);
-};
-
-corner.onpointerup = (e) => {
-  corner.onpointermove = null;
-  corner.releasePointerCapture(e.pointerId);
-};
-    </script>
+        corner.onpointerup = (e) => {
+          corner.onpointermove = null;
+          corner.releasePointerCapture(e.pointerId);
+        };
+      </script>
     </div>
   </body>
 </html>
