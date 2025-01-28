@@ -19,6 +19,29 @@
    min-width: 250px;
    min-height: 250px;
  }
+ .introduction p {margin-bottom: 0;}
+ details {
+  /* border: 1px solid #aaa; */
+  padding: 0 1rem;
+  background-color: var(--figma-color-bg-secondary);
+}
+
+summary {
+  font-weight: bold;
+  margin: 0rem -1rem 0;
+  padding: 1rem;
+  background-color: var(--figma-color-bg);
+}
+
+details[open] {
+  padding: 0 1rem 0.5rem;
+  margin-bottom: 1rem;
+}
+
+details[open] summary {
+  margin-bottom: 1rem;
+}
+
     #corner{
    position: fixed;
    right: 1px;
@@ -41,7 +64,7 @@
 
   }
   ol {
-    color: var(--figma-color-text-secondary);
+    color: var(--figma-color-text-primary);
     padding: 0 1rem;
     li {
       margin-bottom: 0.35em;
@@ -55,7 +78,7 @@
       padding: 1rem 1rem 0;
     }
     .mainContent {
-      padding: 1rem 1rem 0.5rem;
+      padding: 0rem 1rem 0.5rem;
     }
     .secondContent {
       padding: 0rem 1rem 1rem;
@@ -118,6 +141,7 @@ hr {
     
     .secondContent p, .secondContent .calculateTotalButton {
       font-size: 14px;
+      margin-top: 0;
     }
     </style>
   </head>
@@ -129,13 +153,18 @@ hr {
         <path d="M6.22577 16H3L16 3V6.22576L6.22577 16Z" fill="#8C8C8C"/>
         <path d="M11.8602 16H8.63441L16 8.63441V11.8602L11.8602 16Z" fill="#8C8C8C"/>
       </svg>
+      
     <div class="introduction"><h2>Generate numbers</h2>
       <p>Insert numbers between a specific range, with options for negative values.</p>
-    <ol><li>Select text layers</li>
-      <li>Use advanced options to make adjustments (Optional)</li>
-      <li>Press "Generate numbers" to replace data</li>
-      <li>Review results, repeat if necessary</li>
-      <li>Copy total to clipboard</li></ol></div>
+    </div>
+      <details>
+        <summary>Instructions</summary>  
+        <ol><li>Select text layers</li>
+          <li>Use advanced options to make adjustments (Optional)</li>
+          <li>Press "Generate numbers" to replace data</li>
+          <li>Review results, repeat if necessary</li>
+          <li>Copy total to clipboard</li></ol>
+      </details>
     <div class="mainContent">
       
     <button id="generateButton">Generate numbers</button>
@@ -164,15 +193,22 @@ hr {
     </div>
   </div>
 <hr>
-  <div class="introduction"><h2>Calculate totals</h2>
+<div class="introduction"><h2>Calculate totals</h2>
+  <p>Calculate the sum total of the current selection.</p>
+</div>
+  <details>
+  <summary>Instructions</summary>  
+  
     <ol><li>Select text layers</li>
       <li>Press "Calculate total"</li>
-      <li>Copy total to clipboard</li></ol></div>
-    <div id="totalContainer" class="secondContent">
-      <p>Total: <span id="totalValue">0.00</span></p>
-      <button id="calculateTotalButton">Calculate total</button>
-      <button id="copyButton" class="secondary" style="display: none;">Copy to Clipboard</button>
-    </div>
+      <li>Copy total to clipboard</li></ol>
+    
+</details>
+<div id="totalContainer" class="secondContent">
+  <p>Total: <span id="totalValue">0.00</span></p>
+  <button id="calculateTotalButton">Calculate total</button>
+  <button id="copyButton" class="secondary" style="display: none;">Copy to Clipboard</button>
+</div>
 
     <script>
       document.getElementById("generateButton").onclick = () => {
