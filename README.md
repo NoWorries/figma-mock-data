@@ -1,3 +1,5 @@
+![Screenshot of plugin being run on a table of numbers](demo.png)
+
 # Figma Mock data and calculator
 Useful tools to help generate realistic data in your designs.
 
